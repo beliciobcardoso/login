@@ -1,5 +1,6 @@
 import os
 import dotenv
+import time
 
 import flet as ft
 
@@ -120,18 +121,20 @@ def main(pagina):
         
         if user == user_login and password == password_login:
             pagina.remove(container_main)
-            pagina.add(container_control)
-            pagina.add(container_main)
-            pagina.snack_bar = ft.SnackBar(ft.Text("Login efetuado com sucesso",
-                        size=30, color="white"), bgcolor="green")
-            pagina.snack_bar.open = True
             tela_login.open = False
             input_user.value = ""
             input_password.value = ""
+            pagina.snack_bar = ft.SnackBar(ft.Text("Login efetuado com sucesso", size=30, color="white"), bgcolor="green")
+            pagina.snack_bar.open = True
+            pagina.add(container_control)
+            pagina.add(container_main)
+            pagina.update()
+            time.sleep(60)
+            pagina.remove(container_control)
+            pagina.snack_bar.open = False
             pagina.update()
         else:
-            pagina.snack_bar = ft.SnackBar(ft.Text("Usuário ou senha inválidos",
-                        size=30, color="white"), bgcolor="red")
+            pagina.snack_bar = ft.SnackBar(ft.Text("Usuário ou senha inválidos", size=30, color="white"), bgcolor="red")
             pagina.snack_bar.open = True
             input_user.value = ""
             input_password.value = ""
@@ -177,7 +180,7 @@ def main(pagina):
                         ft.PopupMenuItem(text="Configurações"),
                         ft.PopupMenuItem(),  # divider
                         ft.PopupMenuItem(
-                            text="Login", checked=False, on_click=login_page
+                            text="login", checked=False, on_click=login_page
                         ),
                     ]
                 ),
@@ -187,7 +190,7 @@ def main(pagina):
     
     container_main = ft.Container(content=table, alignment=ft.alignment.center)
     
-    pagina.add(container_control)
+    # pagina.add(container_control)
     
     pagina.add(container_main)
   
