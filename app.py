@@ -10,9 +10,13 @@ user_login = os.getenv("USER_LOGIN")
 password_login = os.getenv("PASSWORD_LOGIN")
 
 def main(pagina):
+    pagina.scroll = "adaptive"
+    pagina.padding = 20
+    
     
     def close_dlg(e):
         tela_login.open = False
+        tela_cadastro.open = False
         pagina.update()
     
     button_cancel = ft.ElevatedButton("Cancelar", on_click=close_dlg)
@@ -46,10 +50,50 @@ def main(pagina):
             ),
             ft.DataRow(
                 cells=[
+                    ft.DataCell(ft.Text("Emma")),
+                    ft.DataCell(ft.Text("Johnson")),
+                    ft.DataCell(ft.Text("32")),
+                    ft.DataCell(ft.Text("emma.johnson" + "@email.com")),
+                ],
+            ),
+            ft.DataRow(
+                cells=[
+                    ft.DataCell(ft.Text("Michael")),
+                    ft.DataCell(ft.Text("Williams")),
+                    ft.DataCell(ft.Text("24")),
+                    ft.DataCell(ft.Text("michael.williams" + "@email.com")),
+                ],
+            ),
+            ft.DataRow(
+                cells=[
+                    ft.DataCell(ft.Text("Sophia")),
+                    ft.DataCell(ft.Text("Jones")),
+                    ft.DataCell(ft.Text("29")),
+                    ft.DataCell(ft.Text("sophia.jones" + "@email.com")),
+                ],
+            ),
+            ft.DataRow(
+                cells=[
+                    ft.DataCell(ft.Text("William")),
+                    ft.DataCell(ft.Text("Taylor")),
+                    ft.DataCell(ft.Text("35")),
+                    ft.DataCell(ft.Text("william.taylor" + "@email.com")),
+                ],
+            ),
+            ft.DataRow(
+                cells=[
                     ft.DataCell(ft.Text("Alice")),
                     ft.DataCell(ft.Text("Wong")),
                     ft.DataCell(ft.Text("25")),
                     ft.DataCell(ft.Text("alice.wong" + "@email.com")),
+                ],
+            ),
+            ft.DataRow(
+                cells=[
+                    ft.DataCell(ft.Text("James")),
+                    ft.DataCell(ft.Text("Brown")),
+                    ft.DataCell(ft.Text("21")),
+                    ft.DataCell(ft.Text("james.brown" + "@email.com")),
                 ],
             ),
         ],
@@ -104,6 +148,7 @@ def main(pagina):
         actions=[button_cadastro_user, button_cancel], 
         actions_alignment=ft.MainAxisAlignment.END
         )
+
     
     def cadastro_page(event):
         pagina.dialog = tela_cadastro
